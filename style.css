@@ -3,13 +3,14 @@
     box-sizing: border-box;
 }
 
-/* หน้าเว็บไซต์ */
+/* หน้าเว็บไซต์ - ธีมชมพูหวาน พาสเทล คิตตี้ & โพนี่ */
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: #1f2937;
-    background: linear-gradient(135deg, #eef2ff, #dbeafe);
+    font-family: 'Mali', Arial, sans-serif; /* ใช้ฟอนต์ Mali สไตล์คาวาอี้ */
+    color: #5c3c50;
+    background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #e2afff 100%);
+    background-attachment: fixed;
 }
 
 /* กล่องหลักของเว็บไซต์ */
@@ -20,119 +21,190 @@ body {
 
 /* ส่วนหัว */
 .header {
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     text-align: center;
+}
+
+.header-decor {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    animation: bounce 2s infinite ease-in-out;
 }
 
 .header h1 {
     margin-bottom: 8px;
-    color: #1e3a8a;
+    color: #ff477e;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 0px #ffffff, 4px 4px 10px rgba(255, 71, 126, 0.3);
 }
 
-/* กล่องเนื้อหาแต่ละส่วน */
+.header p {
+    color: #804a6e;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* กล่องเนื้อหาแต่ละส่วน สไตล์การ์ดขอบมนสีขาวพร้อมเงาสีนุ่มนวล */
 .wallet-card,
 .admin-card,
 .voting-card,
 .message-card {
-    margin-bottom: 20px;
-    padding: 24px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.1);
+    margin-bottom: 24px;
+    padding: 26px;
+    background: rgba(255, 255, 255, 0.75); /* ปรับความทึบแสงลงเพื่อให้อิสระแก่ฟิลเตอร์เบลอ */
+    -webkit-backdrop-filter: blur(8px); /* รองรับ Safari และช่วยแก้การเตือนของ Editor */
+    backdrop-filter: blur(8px);
+    border: 3px solid #ffb3c6;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(255, 71, 126, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* เพิ่มเส้นขอบตกแต่งด้านบนการ์ด */
+.wallet-card::before,
+.admin-card::before,
+.voting-card::before,
+.message-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff758f, #ffb3c6, #c77dff, #ff758f);
+}
+
+.admin-card h2,
+.voting-card h2 {
+    color: #ff477e;
+    margin-top: 0;
+    font-size: 1.5rem;
 }
 
 /* ส่วนแสดงข้อมูล Wallet */
 .wallet-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
     justify-content: space-between;
 }
 
 .wallet-address {
-    color: #475569;
+    color: #704c5e;
+    font-family: monospace;
+    font-size: 1rem;
+    background-color: #fff0f5;
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: 1px dashed #ffb3c6;
+    margin-top: 4px;
     overflow-wrap: anywhere;
 }
 
 /* ป้ายแสดงสถานะ */
 .status {
     display: inline-block;
-    padding: 8px 14px;
-    color: #3730a3;
+    padding: 8px 18px;
+    color: #ff2a6d;
     font-weight: bold;
-    background-color: #e0e7ff;
+    background-color: #ffe5ec;
+    border: 2px solid #ffb3c6;
     border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(255, 179, 198, 0.4);
 }
 
 /* Grid สำหรับแสดงรายชื่อผู้สมัคร */
 .candidate-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,
-            minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
 }
 
-/* การ์ดผู้สมัคร */
+/* การ์ดผู้สมัคร สไตล์คิ้วท์ๆ */
 .candidate {
-    padding: 20px;
+    padding: 22px;
     text-align: center;
-    background-color: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 14px;
-    transition: border-color 0.2s, transform 0.2s;
+    background: #ffffff;
+    border: 3px solid #ffccd5;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .candidate:hover {
-    border-color: #2563eb;
-    transform: translateY(-3px);
+    border-color: #ff477e;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 71, 126, 0.25);
 }
 
 /* ชื่อผู้สมัคร */
 .candidate-name {
     margin: 0 0 16px;
-    color: #1e3a8a;
-    font-size: 1.3rem;
+    color: #d63384;
+    font-size: 1.4rem;
+    font-weight: 700;
 }
 
 /* คะแนนที่ได้รับ */
 .vote-result {
     margin: 12px 0;
-    color: #2563eb;
-    font-size: 1.7rem;
+    color: #ff477e;
+    font-size: 1.8rem;
     font-weight: bold;
+    background: #fff0f3;
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px dashed #ff85a1;
 }
 
-/* ปุ่มทั่วไป */
+/* ปุ่มทั่วไป สีชมพูโพนี่ */
 button {
-    padding: 11px 18px;
+    padding: 12px 22px;
     color: #ffffff;
+    font-family: 'Mali', Arial, sans-serif;
     font-size: 1rem;
-    background-color: #2563eb;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff758f 0%, #ff497c 100%);
     border: none;
-    border-radius: 9px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 73, 124, 0.4);
+    transition: all 0.25s ease;
 }
 
 button:hover {
-    background-color: #1d4ed8;
+    background: linear-gradient(135deg, #ff497c 0%, #d63384 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 73, 124, 0.6);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 /* ปุ่มที่ไม่สามารถกดได้ */
 button:disabled {
-    background-color: #94a3b8;
+    background: #e0b0bc;
+    color: #ffffff;
     cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
 }
 
-/* ปุ่มปิดการลงคะแนน */
+/* ปุ่มปิดการลงคะแนน (Danger) สีม่วงพาสเทลสวยงาม */
 .danger {
-    background-color: #dc2626;
+    background: linear-gradient(135deg, #b5179e 0%, #7209b7 100%);
+    box-shadow: 0 4px 15px rgba(114, 9, 183, 0.3);
 }
 
 .danger:hover {
-    background-color: #b91c1c;
+    background: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
+    box-shadow: 0 6px 20px rgba(114, 9, 183, 0.5);
 }
 
 /* กลุ่มปุ่มของผู้ดูแล */
@@ -140,27 +212,49 @@ button:disabled {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    margin-top: 15px;
 }
 
 /* ข้อความแจ้งสถานะ */
 .message {
     margin: 0;
     line-height: 1.6;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 /* ข้อความสำเร็จ */
 .success {
-    color: #15803d;
+    color: #2b9348;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #a3e635;
 }
 
 /* ข้อความผิดพลาด */
 .error {
-    color: #dc2626;
+    color: #d90429;
+    background-color: #ffe5ec;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ff85a1;
 }
 
 /* ซ่อน Element */
 .hidden {
     display: none;
+}
+
+/* แอนิเมชันสำหรับไอคอนส่วนหัว */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 /* ปรับการแสดงผลสำหรับโทรศัพท์มือถือ */
@@ -170,11 +264,16 @@ button:disabled {
         margin: 20px auto;
     }
 
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
     .wallet-card,
     .admin-card,
     .voting-card,
     .message-card {
         padding: 18px;
+        border-radius: 18px;
     }
 
     .wallet-row {
